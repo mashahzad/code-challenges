@@ -41,6 +41,7 @@ public class solutionClass {
             {sum+=array[r][c];
             cref=c;
             //System.out.println(r+"=r and ="+c+cref);
+            System.out.println(array[r][c]+" ");
             break;
             }
         }
