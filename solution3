@@ -51,3 +51,5 @@ public class solutionClass {
     System.out.print("Sum="+sum);
 }
 }
+
+//output: Sum=7619
