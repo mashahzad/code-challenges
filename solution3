@@ -1,0 +1,52 @@
+public class solutionClass {
+    //given data
+    public static int array[][]={{215,0,0,0,0,0,0,0,0,0,0,0,0,0,0},{193 ,124,0,0,0,0,0,0,0,0,0,0,0,0,0},{117 ,237, 442,0,0,0,0,0,0,0,0,0,0,0,0},{218 ,935 ,347 ,235,0,0,0,0,0,0,0,0,0,0,0},{320 ,804 ,522, 417 ,345,0,0,0,0,0,0,0,0,0,0},
+                                {229, 601 ,723, 835, 133, 124,0,0,0,0,0,0,0,0,0},{248 ,202, 277, 433 ,207, 263, 257,0,0,0,0,0,0,0,0},{359 ,464 ,504 ,528, 516, 716, 871 ,182,0,0,0,0,0,0,0},{461 ,441 ,426 ,656 ,863, 560 ,380 ,171 ,923,0,0,0,0,0,0},{381, 348 ,573, 533, 447, 632 ,387 ,176 ,975, 449,0,0,0,0,0},
+                                {223,711,445,645,245,543,931,532,937,541,444,0,0,0,0},{330 ,131 ,333, 928 ,377 ,733, 017, 778, 839, 168, 197, 197,0,0,0},{131,171,522,137,217,224,291,413,528,520,227,229,928,0,0},{223, 626 ,034 ,683 ,839, 053, 627 ,310, 713, 999 ,629, 817 ,410 ,121,0},{924,622,911,233,325,139,721,218,253,223,107,233,230,124,233}};
+    public static boolean elligible(int n){
+        int i,c=0;
+        for (i=1;i<=n;i++){
+        if(n%i==0)
+        c++;
+        }
+        // for non primes
+        if(c==2)
+        return false;
+        else
+        return true;
+    }
+    // max adjacent element
+    public static int maxele(int n,int cfer){
+        int maxele=0,j=0,c=cfer;
+        for(j=c;j<15;j++){
+        //check if no is non prime and largest adjacent no.
+        if(array[n][j]>maxele&&elligible(array[n][j])&&j>=cfer&&j<=cfer+1)//c>=cref&&c<=cref+1(check) or j<=cfer+1
+        {
+            maxele=array[n][j];
+        }
+        }
+        return maxele;
+    }
+    // main method
+    public static void main(String args[]) {
+       
+      int sum=0;
+      int cref=0;
+      for(int r=0;r<15;r++)
+      {
+        for(int c=0;c<=r;c++)
+        {
+            // check if no is 1.non prime, 2. adjacent 3.and follows best path
+            if(array[r][c]>0 && elligible(array[r][c])&&c>=cref&&c<=cref+1&&array[r][c]==maxele(r,cref))
+            {sum+=array[r][c];
+            cref=c;
+            //System.out.println(r+"=r and ="+c+cref);
+            break;
+            }
+        }
+        //System.out.println("new line max elemt"+maxele(r,cref));
+    }
+    //print the sum
+    System.out.print("Sum="+sum);
+}
+}
